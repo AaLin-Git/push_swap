@@ -6,21 +6,21 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/26 12:45:34 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:48:40 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/errors.h"
-// #include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
-	t_list *a = NULL;
-	int index;
-	
+	t_list	*a;
+	t_list	*temp;
+	int		index;
 
 	index = argc - 1;
+	a = NULL;
 	while (index > 0)
 	{
 		if (!is_number(argv[index]))
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		add_node(&a, argv[index]);
 		index--;
 	}
-	t_list *temp = a;
+	temp = a;
 	while (temp)
 	{
 		ft_printf("node = %i\n", *(int *)temp->content);
