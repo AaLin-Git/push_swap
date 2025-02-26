@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   list_manipulation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/26 12:45:34 by akovalch         ###   ########.fr       */
+/*   Created: 2025/02/26 12:41:26 by akovalch          #+#    #+#             */
+/*   Updated: 2025/02/26 12:44:21 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../includes/errors.h"
-// #include <stdlib.h>
 
-int	main(int argc, char **argv)
+void add_node(t_list **stack, char *str)
 {
-	t_list *a = NULL;
-	int index;
+	int *num;
+	t_list *new_node;
 	
-
-	index = argc - 1;
-	while (index > 0)
+	num = malloc(sizeof(int));
+	if (!num)
+		return ;
+	*num = ft_atoi(str);
+	new_node = ft_lstnew(num);
+	if (!new_node)
 	{
-		if (!is_number(argv[index]))
-		{
-			ft_printf("error, NAN");
-			free_stack(&a);
-			return (1);
-		}
-		add_node(&a, argv[index]);
-		index--;
+		free(num);
+		return ;
 	}
-	t_list *temp = a;
-	while (temp)
-	{
-		ft_printf("node = %i\n", *(int *)temp->content);
-		temp = temp->next;
-	}
-	free_stack(&a);
-	return (0);
+	new_node->next = *stack;
+	*stack = new_node;
 }

@@ -4,7 +4,7 @@ RM = rm -f
 
 NAME = push_swap
 
-SRCS = srcs/main.c srcs/validation.c
+SRCS = srcs/main.c srcs/validation.c srcs/list_manipulation.c srcs/clean.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libs/Libft

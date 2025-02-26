@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/26 12:45:34 by akovalch         ###   ########.fr       */
+/*   Created: 2025/02/26 12:43:41 by akovalch          #+#    #+#             */
+/*   Updated: 2025/02/26 12:45:39 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../includes/errors.h"
-// #include <stdlib.h>
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+void free_stack(t_list **stack)
 {
-	t_list *a = NULL;
-	int index;
-	
+	t_list *temp;
 
-	index = argc - 1;
-	while (index > 0)
+	if (!stack || !*stack)
+		return;
+
+	while (*stack)
 	{
-		if (!is_number(argv[index]))
-		{
-			ft_printf("error, NAN");
-			free_stack(&a);
-			return (1);
-		}
-		add_node(&a, argv[index]);
-		index--;
+		temp = (*stack)->next;
+		free((*stack)->content);
+		free(*stack);
+		*stack = temp;
 	}
-	t_list *temp = a;
-	while (temp)
-	{
-		ft_printf("node = %i\n", *(int *)temp->content);
-		temp = temp->next;
-	}
-	free_stack(&a);
-	return (0);
 }
