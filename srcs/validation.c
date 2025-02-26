@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/26 11:44:59 by akovalch         ###   ########.fr       */
+/*   Created: 2025/02/26 11:36:20 by akovalch          #+#    #+#             */
+/*   Updated: 2025/02/26 11:54:41 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../includes/push_swap.h"
 
-typedef struct s_stack
+int	is_number(char *str)
 {
-    int				data;
-	int				index;
-    struct s_stack	*next;
-	struct s_stack	*prev;
-}	t_llist;
+	int i;
 
-int	is_number(char *str);
-
-#endif
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}

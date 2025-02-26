@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lyssa <Lyssa@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:16:34 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/25 18:45:11 by Lyssa            ###   ########.fr       */
+/*   Updated: 2025/02/26 10:09:49 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+// typedef struct s_list
+// {
+//     int				content;
+//     struct s_list	*next;
+// 	struct s_list	*prev;
+// }	t_list;
 
 void	ft_bzero(void *s, size_t n);
 int		ft_putchar(char c);
