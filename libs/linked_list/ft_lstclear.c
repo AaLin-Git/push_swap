@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 12:43:41 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/27 09:48:45 by akovalch         ###   ########.fr       */
+/*   Created: 2024/10/22 15:25:00 by akovalch          #+#    #+#             */
+/*   Updated: 2025/02/27 10:35:23 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "linked_list.h"
+#include <stdio.h>
 #include <stdlib.h>
 
-void	free_stack(t_stack **stack)
+void	ft_lstclear(t_stack **lst)
 {
 	t_stack	*temp;
 
-	if (!stack || !*stack)
+	if (!lst)
 		return ;
-	while (*stack)
+	while (*lst)
 	{
-		temp = (*stack)->next;
-		free(*stack);
-		*stack = temp;
+		temp = (*lst)->next;
+		free(*lst);
+		*lst = temp;
 	}
+	//*lst = NULL;
 }

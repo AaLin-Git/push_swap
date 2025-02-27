@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:36:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/26 13:48:53 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:56:09 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ int	is_number(char *str)
 	int	i;
 
 	i = 0;
+	if (!str || !str[i])
+        return (0);
+	if (str[i] == '-' || str[i] == '+')
+			i++;
+	if (!str[i])
+        return (0);
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' || str[i] == '+')
-			i++;
 		if (str[i] < '0' || str[i] > '9')
 			return (0);
 		i++;

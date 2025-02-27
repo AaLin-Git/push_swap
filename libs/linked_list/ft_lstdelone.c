@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 15:01:48 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/17 18:37:23 by akovalch         ###   ########.fr       */
+/*   Created: 2024/10/22 15:20:17 by akovalch          #+#    #+#             */
+/*   Updated: 2025/02/27 10:35:56 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "linked_list.h"
+#include <stdlib.h>
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstdelone(t_stack *lst)
 {
-	int	i;
-
-	i = 0;
-	while (lst != NULL)
-	{
-		i++;
-		lst = lst->next;
-	}
-	return (i);
+	if (!lst)
+		return ;
+	free(lst);
 }

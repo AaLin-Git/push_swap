@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:16:34 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/26 10:09:49 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:23:47 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,6 @@ char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t	size);
-t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-int		ft_lstsize(t_list *lst);
 char	*get_next_line(int fd);
 int		ft_printf(const char *format, ...);
 

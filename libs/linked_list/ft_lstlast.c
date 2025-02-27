@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 14:55:57 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/17 18:36:26 by akovalch         ###   ########.fr       */
+/*   Created: 2024/10/22 15:07:07 by akovalch          #+#    #+#             */
+/*   Updated: 2025/02/27 10:25:04 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "linked_list.h"
+#include <stdio.h>
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_stack	*ft_lstlast(t_stack *lst)
 {
-	new->next = *lst;
-	*lst = new;
+	while (lst != NULL)
+	{
+		if (lst->next == NULL)
+			return (lst);
+		lst = lst->next;
+	}
+	return (0);
 }

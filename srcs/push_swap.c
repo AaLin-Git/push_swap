@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 15:52:18 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/17 18:36:55 by akovalch         ###   ########.fr       */
+/*   Created: 2025/02/27 11:34:30 by akovalch          #+#    #+#             */
+/*   Updated: 2025/02/27 11:46:05 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void sa(t_stack **stack)
 {
-	while (lst != NULL)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	int temp;
+	
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	temp = (*stack)->data;
+	(*stack)->data = (*stack)->next->data;
+	(*stack)->next->data = temp;
 }
