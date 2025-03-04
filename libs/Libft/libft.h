@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:16:34 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/27 10:23:47 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:27:15 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdint.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-// typedef struct s_list
-// {
-//     int				content;
-//     struct s_list	*next;
-// 	struct s_list	*prev;
-// }	t_list;
 
 void	ft_bzero(void *s, size_t n);
 int		ft_putchar(char c);

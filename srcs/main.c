@@ -6,43 +6,54 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/27 09:57:52 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/04 09:25:14 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/errors.h"
 
+void print_stack(t_stack *stack, int size)
+{
+	int i;
+
+	i = 0;
+	if (!stack)
+		return ;
+	ft_printf("head = %d\n", stack->data);
+
+    while (i < size)
+    {
+        ft_printf("node = %d\n", stack->data);
+        stack = stack->next;
+		i++;
+    }
+	ft_printf("\n");
+}
+
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*temp;
+	t_stack	*stack_a = NULL;
 	int		index;
 
-	index = argc - 1;
-	a = NULL;
 	if (argc < 2)
-    {
-        printf("Use at least 2 arg\n");
-        return (1);
-    }
+	{
+		ft_printf("Use at least 2 args\n");
+		return (1);
+	}
+	index = argc - 1;
 	while (index > 0)
 	{
 		if (!is_number(argv[index]))
 		{
-			ft_printf("error, NAN");
-			free_stack(&a);
+			ft_printf("error, NAN\n");
+			free_stack(&stack_a);
 			return (1);
 		}
-		add_node(&a, argv[index]);
+		add_node(&stack_a, argv[index]);
 		index--;
 	}
-	temp = a;
-	while (temp)
-	{
-		ft_printf("node = %i\n", temp->data);
-		temp = temp->next;
-	}
-	free_stack(&a);
+	print_stack(stack_a, stack_a->size);
+	free_stack(&stack_a);
 	return (0);
 }

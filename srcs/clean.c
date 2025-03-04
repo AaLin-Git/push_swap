@@ -6,23 +6,28 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:43:41 by akovalch          #+#    #+#             */
-/*   Updated: 2025/02/27 09:48:45 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:19:31 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdlib.h>
 
-void	free_stack(t_stack **stack)
+void free_stack(t_stack **stack)
 {
-	t_stack	*temp;
+    if (!stack || !*stack)
+        return;
 
-	if (!stack || !*stack)
-		return ;
-	while (*stack)
-	{
-		temp = (*stack)->next;
-		free(*stack);
-		*stack = temp;
-	}
+    t_stack *temp = *stack;
+    t_stack *next_node;
+    
+    (*stack)->prev->next = NULL;
+
+    while (temp)
+    {
+        next_node = temp->next;
+        free(temp);
+        temp = next_node;
+    }
+    *stack = NULL;
 }
