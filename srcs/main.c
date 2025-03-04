@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/04 12:48:09 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:46:08 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	print_stack(t_stack *stack)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
+	t_stack *stack_b;
 	int		index;
 
 	if (argc < 2)
@@ -43,6 +44,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	stack_a = NULL;
+	stack_b = NULL;
 	index = argc - 1;
 	while (index > 0)
 	{
@@ -55,7 +57,7 @@ int	main(int argc, char **argv)
 		add_node(&stack_a, argv[index]);
 		index--;
 	}
-	sa(&stack_a);
+	ra(&stack_a);
 	print_stack(stack_a);
 	free_stack(&stack_a);
 	return (0);
