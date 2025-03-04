@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/04 14:46:08 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:56:04 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 		add_node(&stack_a, argv[index]);
 		index--;
 	}
-	ra(&stack_a);
+	rra(&stack_a);
 	print_stack(stack_a);
 	free_stack(&stack_a);
 	return (0);
