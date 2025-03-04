@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/03 17:40:47 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/04 12:20:36 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 typedef struct s_stack
 {
     int				data;
-	int				index;
-	int				size;
     struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -27,5 +25,7 @@ typedef struct s_stack
 int		is_number(char *str);
 void	add_node(t_stack **stack, char *arg);
 void	free_stack(t_stack **stack);
+int		get_stack_size(t_stack *stack);
+void	sa(t_stack **stack);
 
 #endif
