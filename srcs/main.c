@@ -6,34 +6,35 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/04 09:25:14 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:59:30 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/errors.h"
 
-void print_stack(t_stack *stack, int size)
+void	print_stack(t_stack *stack)
 {
-	int i;
+	int	i;
+	int	size;
 
 	i = 0;
+	size = get_stack_size(stack);
 	if (!stack)
 		return ;
 	ft_printf("head = %d\n", stack->data);
-
-    while (i < size)
-    {
-        ft_printf("node = %d\n", stack->data);
-        stack = stack->next;
+	while (i < size)
+	{
+		ft_printf("%d -> ", stack->data);
+		stack = stack->next;
 		i++;
-    }
+	}
 	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a = NULL;
+	t_stack	*stack_a;
 	int		index;
 
 	if (argc < 2)
@@ -41,6 +42,7 @@ int	main(int argc, char **argv)
 		ft_printf("Use at least 2 args\n");
 		return (1);
 	}
+	stack_a = NULL;
 	index = argc - 1;
 	while (index > 0)
 	{
@@ -53,7 +55,7 @@ int	main(int argc, char **argv)
 		add_node(&stack_a, argv[index]);
 		index--;
 	}
-	print_stack(stack_a, stack_a->size);
+	print_stack(stack_a);
 	free_stack(&stack_a);
 	return (0);
 }

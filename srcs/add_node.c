@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/04 09:23:44 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/04 12:01:56 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-t_stack	*new_node(int data)
+t_stack	*create_new_node(int data)
 {
 	t_stack	*new_node;
 
@@ -22,34 +22,48 @@ t_stack	*new_node(int data)
 	if (!new_node)
 		return (NULL);
 	new_node->data = data;
-	new_node->index = 0;
 	new_node->next = new_node;
 	new_node->prev = new_node;
 	return (new_node);
 }
 
-void add_node(t_stack **stack, char *arg)
+void	add_node(t_stack **stack, char *arg)
 {
-    t_stack *new;
+	t_stack	*new_node;
+	t_stack	*tail;
+	int		data;
 
-	new = new_node(ft_atoi(arg));
-    if (!new)
-        return;
+	data = ft_atoi(arg);
+	new_node = create_new_node(data);
+	if (!new_node)
+		return ;
+	if (*stack == NULL)
+		*stack = new_node;
+	else
+	{
+		tail = (*stack)->prev;
+		new_node->next = *stack;
+		new_node->prev = tail;
+		tail->next = new_node;
+		(*stack)->prev = new_node;
+		*stack = new_node;
+	}
+}
 
-    if (*stack == NULL)
-    {
-        *stack = new;
-        new->next = new;
-        new->prev = new;
-		(*stack)->size = 1;
-    }
-    else
-    {
-        t_stack *tail = (*stack)->prev;
-        tail->next = new;
-        new->prev = tail;
-        new->next = *stack;
-        (*stack)->prev = new;
-		(*stack)->size++;
-    }
+int	get_stack_size(t_stack *stack)
+{
+	t_stack	*temp;
+	int		i;
+
+	if (stack == NULL)
+		return (0);
+	temp = stack;
+	temp = temp->next;
+	i = 1;
+	while (temp != stack)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }
