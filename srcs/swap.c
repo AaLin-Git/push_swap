@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:34:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/04 13:17:32 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:09:56 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,20 @@ void sa(t_stack **stack)
 	if (!stack || !(*stack) || !(*stack)->next)
 		return ;
 	swap(stack);
+}
+
+void sb(t_stack **stack)
+{
+	if (!stack || (*stack) || !(*stack)->next)
+		return ;
+	swap(stack);
+}
+
+void ss(t_stack **stack_a, t_stack **stack_b)
+{
+	if (!stack_a || !(*stack_a) || !(*stack_a)->next ||
+		!stack_b || !(*stack_b) || !(*stack_b)->next)
+		return ;
+	swap(stack_a);
+	swap(stack_b);
 }
