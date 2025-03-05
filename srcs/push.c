@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:50:44 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/05 09:41:44 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/05 09:50:17 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void push(t_stack **stack_a, t_stack **stack_b)
 	char *value;
 
 	if (!stack_a || !stack_b || !(*stack_a))
-		return;
+		return ;
 	node_to_move = *stack_a;
 	second_node = (*stack_a)->next;
 	last_node = (*stack_a)->prev;
@@ -34,7 +34,7 @@ void push(t_stack **stack_a, t_stack **stack_b)
 	}
 	value = ft_itoa(node_to_move->data);
 	if (!value)
-		return;
+		return ;
 	add_node(stack_b, value);
 	free(node_to_move);
 	free(value);
