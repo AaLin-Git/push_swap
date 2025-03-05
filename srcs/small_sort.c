@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:07:35 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/05 12:13:55 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:50:56 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void sort_five(t_stack **stack_a, t_stack **stack_b)
 	smallest_num = NULL;
 	biggest_num = NULL;
 	size = get_stack_size(*stack_a);
-
 	find_smallest_biggest_num(stack_a, &smallest_num, &biggest_num);
 	while (size > 3)
 	{
