@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/04 12:01:56 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:13:25 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-t_stack	*create_new_node(int data)
+static t_stack	*create_new_node(int data)
 {
 	t_stack	*new_node;
 

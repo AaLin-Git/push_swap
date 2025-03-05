@@ -6,13 +6,13 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:50:44 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/05 09:50:17 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:13:36 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void push(t_stack **stack_a, t_stack **stack_b)
+static void push(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *node_to_move;
 	t_stack *second_node;

@@ -6,13 +6,13 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:34:36 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/04 14:55:50 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:13:41 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void reverse_rotate(t_stack **stack)
+static void reverse_rotate(t_stack **stack)
 {
 	(*stack) = (*stack)->prev;
 }
