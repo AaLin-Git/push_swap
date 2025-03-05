@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/05 09:42:37 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:12:00 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	rrb(t_stack **stack);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	pa(t_stack **stack_b, t_stack **stack_a);
 void	pb(t_stack **stack_a, t_stack **stack_b);
+void	sort_three(t_stack **stack);
 
 #endif
