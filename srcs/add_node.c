@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/05 12:13:25 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:13:17 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	add_node(t_stack **stack, char *arg)
 	new_node = create_new_node(data);
 	if (!new_node)
 		return ;
-	if (*stack == NULL)
+	if (!(*stack))
 		*stack = new_node;
 	else
 	{
@@ -55,7 +55,7 @@ int	get_stack_size(t_stack *stack)
 	t_stack	*temp;
 	int		i;
 
-	if (stack == NULL)
+	if (!stack)
 		return (0);
 	temp = stack;
 	temp = temp->next;

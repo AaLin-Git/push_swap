@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/06 10:38:55 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:32:22 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,10 @@ int is_sorted(int arr[], int size)
 }
 
 
-
 void chunk_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int i;
-	int sorted_array[500] = {0};
-
 	(void)stack_b;
-	i = 0;
-	int size = get_stack_size(*stack_a);
-	init_sort_index(stack_a, sorted_array, size);
+	init_sort_index(stack_a);
 	// while (i < size)
 	// {
 	// 	ft_printf("arr = %d", sorted_array[i]);
