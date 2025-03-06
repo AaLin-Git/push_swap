@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/06 09:54:41 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:38:47 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void	pb(t_stack **stack_a, t_stack **stack_b);
 void	sort_three(t_stack **stack);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b);
+void init_sort_index(t_stack **stack, int arr[], int size);
 
 #endif

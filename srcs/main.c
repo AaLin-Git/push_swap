@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/06 10:06:22 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:35:53 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	main(int argc, char **argv)
 	t_stack *stack_b;
 	int		index;
 
-	if (argc < 2)
+	if (argc < 2 || argc > 501)
 	{
-		ft_printf("Use at least 2 args\n");
+		ft_printf("Use from 2 to 500 args\n");
 		return (1);
 	}
 	stack_a = NULL;
