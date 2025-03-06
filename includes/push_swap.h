@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/05 13:50:42 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/06 09:54:41 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct s_stack
 {
     int				data;
+	int				index;
     struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
