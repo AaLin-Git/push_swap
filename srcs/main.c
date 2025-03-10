@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/06 10:35:53 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:50:59 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_stack(t_stack *stack)
 	while (i < size)
 	{
 		ft_printf("d= %d ", stack->data);
-		ft_printf("i = %d ", stack->index);
+		//ft_printf("i = %d ", stack->index);
 		stack = stack->next;
 		i++;
 		ft_printf("\n");
@@ -60,8 +60,10 @@ int	main(int argc, char **argv)
 		index--;
 	}
 	//sort_five(&stack_a, &stack_b);
-	chunk_sort(&stack_a, &stack_b);
+	chunk_sort(&stack_a, &stack_b, argc - 1);
+	ft_printf("stack_a ----->");
 	print_stack(stack_a);
+	ft_printf("stack_b ----->");
 	print_stack(stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
