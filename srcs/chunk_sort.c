@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 12:16:04 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:18:32 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // 	return (1);
 // }
 
-int find_the_closest(t_stack **stack, int start, int end)
+int return_chunk_direction(t_stack **stack, int start, int end)
 {
 	t_stack *head;
 	t_stack *tail;
@@ -46,7 +46,7 @@ int find_the_closest(t_stack **stack, int start, int end)
 	return (0);
 }
 
-int return_direction(t_stack **stack, int biggest)
+int return_node_direction(t_stack **stack, int biggest)
 {
 	t_stack *head;
 	t_stack *tail;
@@ -91,7 +91,7 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size)
 		count = 0;
 		while (count < chunk_size && *stack_a)
 		{
-			direction = find_the_closest(stack_a, start, end);
+			direction = return_chunk_direction(stack_a, start, end);
 			if (direction > 0)
 			{
 				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
@@ -119,7 +119,7 @@ void insert_chunks(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 	{
 		biggest = return_index(stack_b);
-		direction = return_direction(stack_b, biggest);
+		direction = return_node_direction(stack_b, biggest);
 		size = get_stack_size(*stack_b);
 		if (direction > 0)
 		{
