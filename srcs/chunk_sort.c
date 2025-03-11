@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 09:57:21 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:13:35 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,34 @@ int find_the_closest(t_stack **stack, int start, int end)
 	return (0);
 }
 
+int return_direction(t_stack **stack, int biggest)
+{
+	t_stack *head;
+	t_stack *tail;
+
+	head = *stack;
+	tail = (*stack)->prev;
+
+	while (head != *stack || tail != *stack)
+	{
+		if (head->index == biggest)
+			return (1);
+		if (tail->index == biggest)
+			return (-1);
+		head = head->next;
+		tail = tail->prev;
+	}
+	return (0);
+}
+
+int return_index(t_stack **stack)
+{
+	t_stack *biggest;
+	
+	biggest = NULL;
+	find_biggest_num(stack, &biggest);
+	return (biggest->index);
+}
 
 void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size)
 {
@@ -58,20 +86,18 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size)
 	start = 0;
 	end = chunk_size - 1;
 	size = get_stack_size(*stack_a);
-	while (start < size)
+	while (*stack_a && start < size)
 	{
 		count = 0;
 		while (count < chunk_size && *stack_a)
 		{
 			direction = find_the_closest(stack_a, start, end);
-			if (direction == 0)
-				break ;
 			if (direction > 0)
 			{
 				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
 					ra(stack_a);
 			}
-			else
+			else if (direction < 0)
 			{
 				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
 					rra(stack_a);
@@ -81,6 +107,31 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size)
 		}
 		start += chunk_size;
 		end += chunk_size;
+	}
+}
+
+void insert_chunks(t_stack **stack_a, t_stack **stack_b)
+{
+	int biggest;
+	int direction;
+	int size;
+
+	while (*stack_b)
+	{
+		biggest = return_index(stack_b);
+		direction = return_direction(stack_b, biggest);
+		size = get_stack_size(*stack_b);
+		if (direction > 0)
+		{
+			while ((*stack_b)->index != biggest)
+				rb(stack_b);
+		}
+		else if (direction < 0)
+		{
+			while ((*stack_b)->index != biggest)
+				rrb(stack_b);
+		}
+		pa(stack_b, stack_a);
 	}
 }
 
@@ -95,4 +146,6 @@ void chunk_sort(t_stack **stack_a, t_stack **stack_b, int size)
 	tail =(*stack_a)->prev;
 	init_sort_index(stack_a);
 	push_chunks(stack_a, stack_b, 20);
+	init_sort_index(stack_b);
+	insert_chunks(stack_a, stack_b);
 }
