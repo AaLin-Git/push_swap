@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/06 12:13:17 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:59:04 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,19 @@ int	get_stack_size(t_stack *stack)
 		i++;
 	}
 	return (i);
+}
+
+void fill_stack(t_stack **stack, char **argv, int index)
+{
+	while (index > 0)
+	{
+		if (!is_number(argv[index]))
+		{
+			ft_printf("error, NAN\n");
+			free_stack(stack);
+			return ;
+		}
+		add_node(stack, argv[index]);
+		index--;
+	}
 }

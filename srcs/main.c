@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 10:23:03 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:13:41 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,41 +34,39 @@ void	print_stack(t_stack *stack)
 	ft_printf("\n");
 }
 
-int	main(int argc, char **argv)
+
+
+void sort(char **argv, int size)
 {
 	t_stack	*stack_a;
 	t_stack *stack_b;
-	int		index;
 
-	if (argc < 2 || argc > 501)
-	{
-		ft_printf("Use from 2 to 500 args\n");
-		return (1);
-	}
 	stack_a = NULL;
 	stack_b = NULL;
-	index = argc - 1;
-	while (index > 0)
-	{
-		if (!is_number(argv[index]))
-		{
-			ft_printf("error, NAN\n");
-			free_stack(&stack_a);
-			return (1);
-		}
-		add_node(&stack_a, argv[index]);
-		index--;
-	}
-	//sort_five(&stack_a, &stack_b);
-	chunk_sort(&stack_a, &stack_b, argc - 1);
-	ft_printf("stack_a ----->");
-	print_stack(stack_a);
-	ft_printf("stack_b ----->");
-	print_stack(stack_b);
-	// int size_a = get_stack_size(stack_a);
-	// int size_b = get_stack_size(stack_b);
-	// ft_printf("\na = %i, b = %i\n", size_a, size_b);
+	fill_stack(&stack_a, argv, size);
+	if (size == 2 && ((*stack_a).data > (*stack_a).next->data))
+		ra(&stack_a);
+	else if (size == 3)
+		sort_three(&stack_a);
+	else if (size <= 5)
+		sort_five(&stack_a, &stack_b);
+	else
+		chunk_sort(&stack_a, &stack_b, size);
+	// ft_printf("stack_a ----->");
+	// print_stack(stack_a);
+	// ft_printf("stack_b ----->");
+	// print_stack(stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
+}
+
+int	main(int argc, char **argv)
+{
+	int		size;
+
+	if (argc < 2 || argc > 501)
+		return (ft_printf("Use from 2 to 500 args\n"), 1);
+	size = argc - 1;
+	sort(argv, size);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:50:44 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/10 15:30:06 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:03:25 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void pa(t_stack **stack_b, t_stack **stack_a)
 	if (!stack_a || !stack_b || !(*stack_b))
 		return ;
 	push(stack_b, stack_a);
+	ft_putendl_fd("pa", 1);
 }
 
 void pb(t_stack **stack_a, t_stack **stack_b)
@@ -50,4 +51,5 @@ void pb(t_stack **stack_a, t_stack **stack_b)
 	if (!stack_a || !stack_b || !(*stack_a))
 		return ;
 	push(stack_a, stack_b);
+	ft_putendl_fd("pb", 1);
 }

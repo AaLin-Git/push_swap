@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 10:46:16 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:13:32 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		is_number(char *str);
 void	add_node(t_stack **stack, char *arg);
 void	free_stack(t_stack **stack);
 int		get_stack_size(t_stack *stack);
+void	fill_stack(t_stack **stack, char **argv, int index);
 void	sa(t_stack **stack);
 void	sb(t_stack **stack);
 void	ss(t_stack **stack_a, t_stack **stack_b);
