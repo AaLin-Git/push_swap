@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:36:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/12 10:05:02 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/12 10:15:31 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,42 +27,36 @@ int	is_number(char *str)
 	return (1);
 }
 
-int is_sorted(t_stack **stack, int size)
+int is_sorted(t_stack **stack)
 {
-	int i;
+	t_stack *current;
 
-	i = 0;
-	while (i < size)
+	current = *stack;
+	while (current->next != *stack)
 	{
-		if (*stack > (*stack)->next)
+		if (current->data > current->next->data)
 			return (0);
-		i++;
+		current = current->next;
 	}
 	return (1);
 }
 
-int is_duplicate(t_stack **stack, int size)
+int is_duplicate(t_stack **stack)
 {
 	t_stack *current;
 	t_stack *inner_current;
-	int i;
-	int j;
 	
 	current = *stack;
-	i = 0;
-	while (i < size - 1)
-	{
-		j = 0;
-		inner_current = (*stack)->next;
-		while (j < size - 1)
+	while (current->next != *stack)
+	{;
+		inner_current = current->next;
+		while (inner_current != *stack)
 		{
-			if (inner_current->data == inner_current->next->data)
+			if (current->data == inner_current->data)
 				return (1);
 			inner_current = inner_current->next;
-			j++;
 		}
 		current = current->next;
-		i++;
 	}
 	return (0);
 }

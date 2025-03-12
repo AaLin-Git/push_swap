@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/12 10:05:57 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/12 10:16:17 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,20 @@ void sort(char **argv, int size)
 	stack_b = NULL;
 	fill_stack(&stack_a, argv, size);
 
-	if (is_duplicate(&stack_a, size) || is_sorted(&stack_a, size))
+	if (is_duplicate(&stack_a) || is_sorted(&stack_a))
 	{
-		ft_printf("dup or sorted");
+		//ft_printf("dup or sorted");
 		return ;
 	}
 
-	// if (size == 2 && ((*stack_a).data > (*stack_a).next->data))
-	// 	ra(&stack_a);
-	// else if (size == 3)
-	// 	sort_three(&stack_a);
-	// else if (size <= 5)
-	// 	sort_five(&stack_a, &stack_b);
-	// else
-	// 	chunk_sort(&stack_a, &stack_b, size);
-		
-		
+	if (size == 2 && ((*stack_a).data > (*stack_a).next->data))
+		ra(&stack_a);
+	else if (size == 3)
+		sort_three(&stack_a);
+	else if (size <= 5)
+		sort_five(&stack_a, &stack_b);
+	else
+		chunk_sort(&stack_a, &stack_b, size);
 	// ft_printf("stack_a ----->");
 	// print_stack(stack_a);
 	// ft_printf("stack_b ----->");
