@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/12 11:54:51 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:15:25 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,30 @@ int return_node_direction(t_stack **stack, int start, int end)
 {
 	t_stack *head;
 	t_stack *tail;
+	int count;
 
 	head = *stack;
 	tail = (*stack)->prev;
+	count = 0;
 	while (head != *stack || tail != *stack)
 	{
 		if (end == 0)
 		{
 			if (head->index == start)
-				return (1);
+				return (count);
 			if (tail->index == start)
-				return (-1);
+				return (count * -1);
 		}
 		else
 		{
 			if (head->index >= start && head->index <= end)
-				return (1);
+				return (count);
 			if (tail->index >= start && tail->index <= end)
-				return (-1);
+				return (count * -1);
 		}
 		head = head->next;
 		tail = tail->prev;
+		count++;
 	}
 	return (0);
 }
@@ -53,7 +56,12 @@ void move_node(t_stack **stack_a, t_stack **stack_b,int chunk_size, int start, i
 			if (direction > 0)
 			{
 				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
-					ra(stack_a);
+				{
+					if (direction == 1)
+						sa(stack_a);
+					else
+						ra(stack_a);
+				}
 			}
 			else if (direction < 0)
 			{
@@ -77,6 +85,8 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size, int size)
 		move_node(stack_a, stack_b, chunk_size, start, end);
 		start += chunk_size;
 		end += chunk_size;
+		if (is_sorted(stack_a))
+			return ;
 	}
 }
 
