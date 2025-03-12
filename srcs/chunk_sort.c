@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/12 11:47:36 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:54:51 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,6 @@ int return_node_direction(t_stack **stack, int start, int end)
 		tail = tail->prev;
 	}
 	return (0);
-}
-
-int return_index(t_stack **stack)
-{
-	t_stack *biggest;
-	
-	biggest = NULL;
-	find_biggest_num(stack, &biggest);
-	return (biggest->index);
 }
 
 void move_node(t_stack **stack_a, t_stack **stack_b,int chunk_size, int start, int end)
@@ -91,13 +82,16 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size, int size)
 
 void insert_chunks(t_stack **stack_a, t_stack **stack_b)
 {
+	t_stack *biggest_node;
 	int biggest;
 	int direction;
 	int size;
 
+	biggest_node = NULL;
 	while (*stack_b)
 	{
-		biggest = return_index(stack_b);
+		find_biggest_num(stack_b, &biggest_node);
+		biggest = biggest_node->index;
 		direction = return_node_direction(stack_b, biggest, 0);
 		size = get_stack_size(*stack_b);
 		if (direction > 0)
