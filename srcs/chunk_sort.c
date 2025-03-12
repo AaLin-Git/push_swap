@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/12 09:13:03 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:47:36 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ int return_node_direction(t_stack **stack, int start, int end)
 
 	head = *stack;
 	tail = (*stack)->prev;
-
 	while (head != *stack || tail != *stack)
 	{
 		if (end == 0)
 		{
 			if (head->index == start)
-			return (1);
-		if (tail->index == start)
-			return (-1);
+				return (1);
+			if (tail->index == start)
+				return (-1);
 		}
 		else
 		{
@@ -42,26 +41,6 @@ int return_node_direction(t_stack **stack, int start, int end)
 	return (0);
 }
 
-// int return_node_direction(t_stack **stack, int biggest)
-// {
-// 	t_stack *head;
-// 	t_stack *tail;
-
-// 	head = *stack;
-// 	tail = (*stack)->prev;
-
-// 	while (head != *stack || tail != *stack)
-// 	{
-// 		if (head->index == biggest)
-// 			return (1);
-// 		if (tail->index == biggest)
-// 			return (-1);
-// 		head = head->next;
-// 		tail = tail->prev;
-// 	}
-// 	return (0);
-// }
-
 int return_index(t_stack **stack)
 {
 	t_stack *biggest;
@@ -71,21 +50,13 @@ int return_index(t_stack **stack)
 	return (biggest->index);
 }
 
-void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size)
+void move_node(t_stack **stack_a, t_stack **stack_b,int chunk_size, int start, int end)
 {
-	int start;
-	int end;
-	int direction;
 	int count;
-	int size;
-
-	start = 0;
-	end = chunk_size - 1;
-	size = get_stack_size(*stack_a);
-	while (start < size)
-	{
-		count = 0;
-		while (count < chunk_size && *stack_a)
+	int direction;
+	
+	count = 0;
+	while (count < chunk_size && *stack_a)
 		{
 			direction = return_node_direction(stack_a, start, end);
 			if (direction > 0)
@@ -101,6 +72,18 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size)
 			pb(stack_a, stack_b);
 			count++;
 		}
+}
+
+void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size, int size)
+{
+	int start;
+	int end;
+
+	start = 0;
+	end = chunk_size - 1;
+	while (start < size)
+	{
+		move_node(stack_a, stack_b, chunk_size, start, end);
 		start += chunk_size;
 		end += chunk_size;
 	}
@@ -133,8 +116,6 @@ void insert_chunks(t_stack **stack_a, t_stack **stack_b)
 
 void chunk_sort(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	// t_stack *head;
-	// t_stack *tail;
 	int chunk_size;
 	
 	if (size <= 100)
@@ -143,10 +124,8 @@ void chunk_sort(t_stack **stack_a, t_stack **stack_b, int size)
 		chunk_size = size / 8;
 	else
 		chunk_size = size / 11;
-	// head = *stack_a;
-	// tail =(*stack_a)->prev;
 	init_sort_index(stack_a);
-	push_chunks(stack_a, stack_b, chunk_size);
+	push_chunks(stack_a, stack_b, chunk_size, size);
 	init_sort_index(stack_b);
 	insert_chunks(stack_a, stack_b);
 }

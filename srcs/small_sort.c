@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:07:35 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 10:45:57 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/12 10:36:53 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ void sort_five(t_stack **stack_a, t_stack **stack_b)
 	{
 		if (biggest_num == *stack_a || smallest_num == *stack_a)
 		{
+			pb(stack_a, stack_b);
+			size--;
+		}
+		else if (biggest_num == (*stack_a)->prev || smallest_num == (*stack_a)->prev)
+		{
+			rra(stack_a);
 			pb(stack_a, stack_b);
 			size--;
 		}

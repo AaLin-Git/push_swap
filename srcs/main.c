@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/12 10:16:17 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:46:58 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	print_stack(t_stack *stack)
 	}
 	ft_printf("\n");
 }
-
-
 
 void sort(char **argv, int size)
 {
