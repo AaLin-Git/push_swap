@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/13 10:24:12 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/13 12:57:32 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int return_node_direction(t_stack **stack, int start, int end)
 {
 	t_stack *head;
 	t_stack *tail;
-	int count;
+	//int count;
 
 	head = *stack;
 	tail = (*stack)->prev;
-	count = 0;
+	//count = 0;
 	while (head != *stack || tail != *stack)
 	{
 		if (end == 0)
@@ -39,7 +39,7 @@ int return_node_direction(t_stack **stack, int start, int end)
 		}
 		head = head->next;
 		tail = tail->prev;
-		count++;
+		//count++;
 	}
 	return (0);
 }
@@ -53,15 +53,25 @@ void move_node(t_stack **stack_a, t_stack **stack_b,int chunk_size, int start, i
 	while (count < chunk_size && *stack_a)
 		{
 			direction = return_node_direction(stack_a, start, end);
+			if ((*stack_a)->index >= start && (*stack_a)->index <= end)
+			{
+				pb(stack_a, stack_b);
+				count++;
+				continue ;
+			}
+			if (direction == 0)
+				break ;
 			if (direction > 0)
 			{
-				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
+				if ((*stack_a)->next && (*stack_a)->next->index >= start && (*stack_a)->next->index <= end)
 				{
-					// if (direction == 1)
-					// 	sa(stack_a);
-					// else
-					ra(stack_a);
+					sa(stack_a);
+					pb(stack_a, stack_b);
+					count++;
+					continue;
 				}
+				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
+					ra(stack_a);
 			}
 			else if (direction < 0)
 			{
@@ -87,7 +97,7 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size, int size)
 		move_node(stack_a, stack_b, chunk_size, start, end);
 		start += chunk_size;
 		end += chunk_size;
-		// if (is_sorted(stack_a))
+		// if (is_sorted(stack_a) && !(*stack_b))
 		// 	return ;
 	}
 }
@@ -125,7 +135,7 @@ void chunk_sort(t_stack **stack_a, t_stack **stack_b, int size)
 	int chunk_size;
 	
 	if (size <= 100)
-		chunk_size = size / 5;
+		chunk_size = 20;
 	else if (size <= 300)
 		chunk_size = size / 8;
 	else

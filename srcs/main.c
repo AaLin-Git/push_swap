@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/13 09:53:53 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/13 12:47:49 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ void sort(char **argv, int size)
 		return ;
 	}
 
-	// if (size == 2 && ((*stack_a).data > (*stack_a).next->data))
-	// 	ra(&stack_a);
-	// else if (size == 3)
-	// 	sort_three(&stack_a);
-	// else if (size <= 5)
-	// 	sort_five(&stack_a, &stack_b);
-	// else
-	// 	chunk_sort(&stack_a, &stack_b, size);
-	insert_sort(&stack_a, &stack_b, size);
-	ft_printf("stack_a ----->");
-	print_stack(stack_a);
-	ft_printf("stack_b ----->");
-	print_stack(stack_b);
+	if (size == 2 && ((*stack_a).data > (*stack_a).next->data))
+		ra(&stack_a);
+	else if (size == 3)
+		sort_three(&stack_a);
+	else if (size <= 5)
+		sort_five(&stack_a, &stack_b);
+	else
+		chunk_sort(&stack_a, &stack_b, size);
+	//insert_sort(&stack_a, &stack_b, size);
+	// ft_printf("stack_a ----->");
+	// print_stack(stack_a);
+	// ft_printf("stack_b ----->");
+	// print_stack(stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 }
