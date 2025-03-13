@@ -5,7 +5,7 @@ RM = rm -f
 NAME = push_swap
 
 SRCS = srcs/main.c srcs/add_node.c srcs/validation.c srcs/clean.c srcs/swap.c srcs/push.c \
-srcs/rotate.c srcs/reverse_rotate.c srcs/small_sort.c srcs/chunk_sort.c srcs/assign_index.c
+srcs/rotate.c srcs/reverse_rotate.c srcs/small_sort.c srcs/chunk_sort.c srcs/assign_index.c srcs/insert_sort.c
 
 OBJS = $(SRCS:.c=.o)
 
