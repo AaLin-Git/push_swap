@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/13 12:57:32 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/17 10:04:08 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ int return_node_direction(t_stack **stack, int start, int end)
 {
 	t_stack *head;
 	t_stack *tail;
-	//int count;
 
 	head = *stack;
 	tail = (*stack)->prev;
-	//count = 0;
 	while (head != *stack || tail != *stack)
 	{
 		if (end == 0)
@@ -39,7 +37,6 @@ int return_node_direction(t_stack **stack, int start, int end)
 		}
 		head = head->next;
 		tail = tail->prev;
-		//count++;
 	}
 	return (0);
 }

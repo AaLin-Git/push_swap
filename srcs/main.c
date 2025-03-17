@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/13 12:47:49 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/17 10:56:51 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void sort(char **argv, int size)
 	if (is_duplicate(&stack_a) || is_sorted(&stack_a))
 	{
 		//ft_printf("dup or sorted");
+		free_stack(&stack_a);
 		return ;
 	}
 
@@ -53,10 +54,9 @@ void sort(char **argv, int size)
 	else if (size == 3)
 		sort_three(&stack_a);
 	else if (size <= 5)
-		sort_five(&stack_a, &stack_b);
+		sort_five(&stack_a, &stack_b, size);
 	else
 		chunk_sort(&stack_a, &stack_b, size);
-	//insert_sort(&stack_a, &stack_b, size);
 	// ft_printf("stack_a ----->");
 	// print_stack(stack_a);
 	// ft_printf("stack_b ----->");

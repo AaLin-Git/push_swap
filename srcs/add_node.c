@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 11:59:04 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/17 10:08:33 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int	get_stack_size(t_stack *stack)
 
 	if (!stack)
 		return (0);
-	temp = stack;
-	temp = temp->next;
+	temp = stack->next;
 	i = 1;
 	while (temp != stack)
 	{
