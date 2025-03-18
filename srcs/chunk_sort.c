@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:29:57 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:45:23 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,8 @@ void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int size)
 
 	if (size <= 100)
 		chunk_size = 20;
-	else if (size <= 300)
-		chunk_size = size / 8;
 	else
-		chunk_size = size / 11;
+		chunk_size = 35;
 	init_sort_index(stack_a);
 	push_chunks(stack_a, stack_b, chunk_size, size);
 	init_sort_index(stack_b);
