@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 12:07:12 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:40:09 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	sort(char **argv, int size)
 	if (is_valid(argv, size))
 	{
 		fill_stack(&stack_a, argv, size);
+		int st_size = get_stack_size(stack_a);
+		ft_printf("size = %i", st_size);
 		if (is_sorted(&stack_a))
 		{
 			free_stack(&stack_a);

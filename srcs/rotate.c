@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:34:33 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 12:39:46 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:06:17 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 
 static void	rotate(t_stack **stack)
 {
-	*stack = (*stack)->next;
+	t_stack *head;
+	t_stack *second_node;
+	t_stack *tail;
+
+	head = *stack;
+	second_node = (*stack)->next;
+	tail = *stack;
+	while (tail->next != NULL)
+		tail = tail->next;
+	tail->next = head;
+	head->prev = tail;
+	head->next = NULL;
+	second_node->prev = NULL;
+	*stack = second_node;
 }
 
 void	ra(t_stack **stack)

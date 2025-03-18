@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:15:43 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:44:09 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ static t_stack	*create_new_node(int data)
 	if (!new_node)
 		return (NULL);
 	new_node->data = data;
-	new_node->next = new_node;
-	new_node->prev = new_node;
+	new_node->next = NULL;
+	new_node->prev = NULL;
 	return (new_node);
 }
 
 void	add_node(t_stack **stack, char *arg)
 {
 	t_stack	*new_node;
-	t_stack	*tail;
 	int		data;
 
 	data = ft_atoi(arg);
@@ -42,10 +41,7 @@ void	add_node(t_stack **stack, char *arg)
 		*stack = new_node;
 	else
 	{
-		tail = (*stack)->prev;
 		new_node->next = *stack;
-		new_node->prev = tail;
-		tail->next = new_node;
 		(*stack)->prev = new_node;
 		*stack = new_node;
 	}
@@ -53,16 +49,14 @@ void	add_node(t_stack **stack, char *arg)
 
 int	get_stack_size(t_stack *stack)
 {
-	t_stack	*temp;
 	int		i;
 
 	if (!stack)
 		return (0);
-	temp = stack->next;
-	i = 1;
-	while (temp != stack)
+	i = 0;
+	while (stack != NULL)
 	{
-		temp = temp->next;
+		stack = stack->next;
 		i++;
 	}
 	return (i);
