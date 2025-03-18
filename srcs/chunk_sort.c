@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/17 10:04:08 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:23:50 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,13 @@ void move_node(t_stack **stack_a, t_stack **stack_b,int chunk_size, int start, i
 	while (count < chunk_size && *stack_a)
 		{
 			direction = return_node_direction(stack_a, start, end);
-			if ((*stack_a)->index >= start && (*stack_a)->index <= end)
+			while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
 			{
-				pb(stack_a, stack_b);
-				count++;
-				continue ;
-			}
-			if (direction == 0)
-				break ;
-			if (direction > 0)
-			{
-				if ((*stack_a)->next && (*stack_a)->next->index >= start && (*stack_a)->next->index <= end)
-				{
-					sa(stack_a);
-					pb(stack_a, stack_b);
-					count++;
-					continue;
-				}
-				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
+				if (direction > 0)
 					ra(stack_a);
-			}
-			else if (direction < 0)
-			{
-				while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
+				else
 					rra(stack_a);
 			}
-			// if (is_sorted(stack_a))
-			// 	break ;
 			pb(stack_a, stack_b);
 			count++;
 		}
@@ -94,8 +74,6 @@ void push_chunks(t_stack **stack_a, t_stack **stack_b, int chunk_size, int size)
 		move_node(stack_a, stack_b, chunk_size, start, end);
 		start += chunk_size;
 		end += chunk_size;
-		// if (is_sorted(stack_a) && !(*stack_b))
-		// 	return ;
 	}
 }
 
@@ -106,21 +84,19 @@ void insert_chunks(t_stack **stack_a, t_stack **stack_b)
 	int direction;
 	int size;
 
-	biggest_node = NULL;
 	while (*stack_b)
 	{
 		find_biggest_num(stack_b, &biggest_node);
+		if (!biggest_node)
+			return;
 		biggest = biggest_node->index;
-		direction = return_node_direction(stack_b, biggest, 0);
 		size = get_stack_size(*stack_b);
-		if (direction > 0)
+		direction = return_node_direction(stack_b, biggest, 0);
+		while ((*stack_b)->index != biggest)
 		{
-			while ((*stack_b)->index != biggest)
+			if (direction > 0)
 				rb(stack_b);
-		}
-		else if (direction < 0)
-		{
-			while ((*stack_b)->index != biggest)
+			else
 				rrb(stack_b);
 		}
 		pa(stack_b, stack_a);

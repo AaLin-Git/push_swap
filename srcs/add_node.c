@@ -6,11 +6,12 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/17 10:08:33 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:23:11 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../includes/errors.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -71,12 +72,6 @@ void fill_stack(t_stack **stack, char **argv, int index)
 {
 	while (index > 0)
 	{
-		if (!is_number(argv[index]))
-		{
-			ft_printf("error, NAN\n");
-			free_stack(stack);
-			return ;
-		}
 		add_node(stack, argv[index]);
 		index--;
 	}
