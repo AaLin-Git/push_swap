@@ -6,16 +6,16 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:34:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 12:05:28 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:11:13 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void swap(t_stack **stack)
+static void	swap(t_stack **stack)
 {
-	t_stack *first_node;
-	t_stack *second_node;
+	t_stack	*first_node;
+	t_stack	*second_node;
 
 	first_node = *stack;
 	second_node = first_node->next;

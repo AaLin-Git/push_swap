@@ -6,37 +6,17 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 10:50:30 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:13:25 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/errors.h"
 
-void	print_stack(t_stack *stack)
-{
-	int	i;
-	int	size;
-
-	i = 0;
-	size = get_stack_size(stack);
-	if (!stack)
-		return ;
-	while (i < size)
-	{
-		ft_printf("d= %d ", stack->data);
-		ft_printf("i = %d ", stack->index);
-		stack = stack->next;
-		i++;
-		ft_printf("\n");
-	}
-	ft_printf("\n");
-}
-
-void sort(char **argv, int size)
+void	sort(char **argv, int size)
 {
 	t_stack	*stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -56,18 +36,14 @@ void sort(char **argv, int size)
 			sort_five(&stack_a, &stack_b, size);
 		else
 			chunk_sort(&stack_a, &stack_b, size);
+		free_stack(&stack_a);
+		free_stack(&stack_b);
 	}
-	// ft_printf("stack_a ----->");
-	// print_stack(stack_a);
-	// ft_printf("stack_b ----->");
-	// print_stack(stack_b);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
 }
 
 int	main(int argc, char **argv)
 {
-	int		size;
+	int	size;
 
 	if (argc < 2 || argc > 501)
 		return (ft_printf(ERR_ARG), 1);

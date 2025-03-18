@@ -6,16 +6,16 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:27:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/06 10:44:01 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:30:13 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void stack_to_arr(t_stack **stack, int arr[])
+void	stack_to_arr(t_stack **stack, int arr[])
 {
-	int i;
-	t_stack *current;
+	int		i;
+	t_stack	*current;
 
 	i = 0;
 	current = (*stack)->next;
@@ -29,11 +29,11 @@ void stack_to_arr(t_stack **stack, int arr[])
 	}
 }
 
-void bubble_sort(int arr[], int size)
+void	bubble_sort(int arr[], int size)
 {
-	int i;
-	int j;
-	int temp;
+	int	i;
+	int	j;
+	int	temp;
 
 	i = 0;
 	while (i < size -1)
@@ -53,10 +53,10 @@ void bubble_sort(int arr[], int size)
 	}
 }
 
-void set_index(t_stack **stack, int arr[], int size)
+void	set_index(t_stack **stack, int arr[], int size)
 {
-	int i;
-	t_stack *current;
+	int		i;
+	t_stack	*current;
 
 	current = (*stack);
 	while (1)
@@ -77,13 +77,14 @@ void set_index(t_stack **stack, int arr[], int size)
 	}
 }
 
-void init_sort_index(t_stack **stack)
+void	init_sort_index(t_stack **stack)
 {
-	int arr[500] = {0};
-	
+	int	arr[500];
+	int	size;
+
 	if (!stack || !(*stack))
 		return ;
-	int size = get_stack_size(*stack);
+	size = get_stack_size(*stack);
 	stack_to_arr(stack, arr);
 	bubble_sort(arr, size);
 	set_index(stack, arr, size);

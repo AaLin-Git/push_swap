@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/17 14:06:18 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:30:36 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 
 typedef struct s_stack
 {
-    int				data;
+	int				data;
 	int				index;
-    struct s_stack	*next;
+	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
 
-int		is_number(char **argv, int size);
 int		is_sorted(t_stack **stack);
 int		is_valid(char **argv, int size);
 void	add_node(t_stack **stack, char *arg);

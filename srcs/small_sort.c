@@ -6,22 +6,21 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:07:35 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/17 10:51:59 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:17:40 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void sort_three(t_stack **stack)
+void	sort_three(t_stack **stack)
 {
-	int first_node;
-	int second_node;
-	int third_node;
+	int	first_node;
+	int	second_node;
+	int	third_node;
 
 	first_node = (*stack)->data;
 	second_node = (*stack)->next->data;
 	third_node = (*stack)->prev->data;
-
 	if ((first_node < third_node) && (third_node < second_node))
 	{
 		sa(stack);
@@ -29,7 +28,7 @@ void sort_three(t_stack **stack)
 	}
 	if ((second_node < first_node) && (first_node < third_node))
 		sa(stack);
-	if ((third_node < first_node) && (first_node <second_node))
+	if ((third_node < first_node) && (first_node < second_node))
 		rra(stack);
 	if ((second_node < third_node) && (third_node < first_node))
 		ra(stack);
@@ -40,9 +39,9 @@ void sort_three(t_stack **stack)
 	}
 }
 
-static void find_smallest_num(t_stack **stack, t_stack **smallest)
+static void	find_smallest_num(t_stack **stack, t_stack **smallest)
 {
-	t_stack *current;
+	t_stack	*current;
 
 	current = (*stack)->next;
 	*smallest = (*stack);
@@ -54,9 +53,9 @@ static void find_smallest_num(t_stack **stack, t_stack **smallest)
 	}
 }
 
-void find_biggest_num(t_stack **stack, t_stack **biggest)
+void	find_biggest_num(t_stack **stack, t_stack **biggest)
 {
-	t_stack *current;
+	t_stack	*current;
 
 	current = (*stack)->next;
 	*biggest = (*stack);
@@ -68,10 +67,10 @@ void find_biggest_num(t_stack **stack, t_stack **biggest)
 	}
 }
 
-void sort_five(t_stack **stack_a, t_stack **stack_b, int size)
+void	sort_five(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	t_stack *smallest_num;
-	t_stack *biggest_num;
+	t_stack	*smallest_num;
+	t_stack	*biggest_num;
 
 	smallest_num = NULL;
 	biggest_num = NULL;

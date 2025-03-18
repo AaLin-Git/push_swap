@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:34:33 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/11 12:04:55 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:16:23 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	rotate(t_stack **stack)
 void	ra(t_stack **stack)
 {
 	if (!stack || !(*stack) || !(*stack)->next)
-		return;
+		return ;
 	rotate(stack);
 	ft_putendl_fd("ra", 1);
 }

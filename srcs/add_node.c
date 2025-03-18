@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/17 16:23:11 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:15:43 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	get_stack_size(t_stack *stack)
 	return (i);
 }
 
-void fill_stack(t_stack **stack, char **argv, int index)
+void	fill_stack(t_stack **stack, char **argv, int index)
 {
 	while (index > 0)
 	{
