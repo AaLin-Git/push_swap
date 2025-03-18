@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:34:33 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:16:23 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:39:46 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	rb(t_stack **stack)
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
+	if (!stack_a || !(*stack_a) || !(*stack_a)->next
+		|| !stack_b || !(*stack_b) || !(*stack_b)->next)
+		return ;
 	rotate(stack_a);
 	rotate(stack_b);
 	ft_putendl_fd("rr", 1);
