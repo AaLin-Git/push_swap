@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:36:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/19 11:56:37 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:27:08 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,8 @@ static int	is_int_limit(char **argv, int size)
 
 int	is_valid(char **argv, int size)
 {
-	if (!is_number(argv, size))
-		return (print_error(ERR_NAN), 0);
-	if (is_duplicate(argv, size))
-		return (print_error(ERR_DUP), 0);
-	if (is_int_limit(argv, size))
-		return (print_error(ERR_INT), 0);
+	if (!is_number(argv, size) || is_duplicate(argv, size)
+		|| is_int_limit(argv, size))
+		return (print_error(ERR), 0);
 	return (1);
 }
