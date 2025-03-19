@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/19 11:51:42 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:22:02 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	pa(t_stack **stack_b, t_stack **stack_a);
 void	pb(t_stack **stack_a, t_stack **stack_b);
 void	sort_three(t_stack **stack);
 void	sort_five(t_stack **stack_a, t_stack **stack_b, int size);
+void	sort(char **argv, int size);
+void	push_chunks(t_stack **st_a, t_stack **st_b, int ch_size, int size);
+void	insert_chunks(t_stack **stack_a, t_stack **stack_b);
 void	find_biggest_num(t_stack **stack, t_stack **biggest);
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int size);
 void	init_sort_index(t_stack **stack);
