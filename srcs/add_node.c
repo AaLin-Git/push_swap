@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/19 11:51:19 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:14:43 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	fill_stack(t_stack **stack, char **argv, int index)
 
 t_stack	*return_last_node(t_stack **stack)
 {
-	t_stack *tail;
-	
+	t_stack	*tail;
+
 	if (!stack || !(*stack))
 		return (NULL);
 	tail = *stack;
