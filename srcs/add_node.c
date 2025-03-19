@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 15:44:09 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:51:19 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,16 @@ void	fill_stack(t_stack **stack, char **argv, int index)
 		add_node(stack, argv[index]);
 		index--;
 	}
+}
+
+t_stack	*return_last_node(t_stack **stack)
+{
+	t_stack *tail;
+	
+	if (!stack || !(*stack))
+		return (NULL);
+	tail = *stack;
+	while (tail->next != NULL)
+		tail = tail->next;
+	return (tail);
 }

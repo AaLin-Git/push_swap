@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:45:23 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 10:52:04 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int size)
 		chunk_size = 35;
 	init_sort_index(stack_a);
 	push_chunks(stack_a, stack_b, chunk_size, size);
-	init_sort_index(stack_b);
+	//init_sort_index(stack_b);
 	insert_chunks(stack_a, stack_b);
 }

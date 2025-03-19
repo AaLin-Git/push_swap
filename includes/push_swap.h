@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:53 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 12:13:01 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:51:42 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	find_biggest_num(t_stack **stack, t_stack **biggest);
 void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int size);
 void	init_sort_index(t_stack **stack);
 void	print_error(const char *str);
+t_stack	*return_last_node(t_stack **stack);
 
 #endif

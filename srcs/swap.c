@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:34:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 15:55:13 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:46:18 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	swap(t_stack **stack)
 
 	first_node = *stack;
 	second_node = (*stack)->next;
+	first_node->next = second_node->next;
 	if (second_node->next)
 		second_node->next->prev = first_node;
-	first_node->next = second_node->next;
 	second_node->next = first_node;
 	first_node->prev = second_node;
 	second_node->prev = NULL;

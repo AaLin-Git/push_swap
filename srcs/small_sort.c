@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:07:35 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:17:40 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:52:07 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void	sort_three(t_stack **stack)
 {
-	int	first_node;
-	int	second_node;
-	int	third_node;
+	t_stack	*tail;
+	int		first_node;
+	int		second_node;
+	int		third_node;
 
+	if (!stack || !(*stack) || !(*stack)->next || !(*stack)->next->next)
+		return ;
+	tail = return_last_node(stack);
 	first_node = (*stack)->data;
 	second_node = (*stack)->next->data;
-	third_node = (*stack)->prev->data;
+	third_node = tail->data;
 	if ((first_node < third_node) && (third_node < second_node))
 	{
 		sa(stack);
@@ -43,9 +47,9 @@ static void	find_smallest_num(t_stack **stack, t_stack **smallest)
 {
 	t_stack	*current;
 
-	current = (*stack)->next;
-	*smallest = (*stack);
-	while (current != *stack)
+	current = *stack;
+	*smallest = *stack;
+	while (current != NULL)
 	{
 		if (current->data < (*smallest)->data)
 			*smallest = current;
@@ -57,9 +61,9 @@ void	find_biggest_num(t_stack **stack, t_stack **biggest)
 {
 	t_stack	*current;
 
-	current = (*stack)->next;
-	*biggest = (*stack);
-	while (current != *stack)
+	current = *stack;
+	*biggest = *stack;
+	while (current != NULL)
 	{
 		if (current->data > (*biggest)->data)
 			*biggest = current;

@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:43:41 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 12:13:07 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:35:37 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	free_stack(t_stack **stack)
 	if (!stack || !*stack)
 		return ;
 	temp = *stack;
-	(*stack)->prev->next = NULL;
 	while (temp)
 	{
 		next_node = temp->next;
