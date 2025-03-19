@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/19 11:47:54 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:03:29 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	sort(char **argv, int size)
 			sort_five(&stack_a, &stack_b, size);
 		else
 			chunk_sort(&stack_a, &stack_b, size);
-		ft_printf("stack_a ---->");
-		print_stack(stack_a);
-		ft_printf("stack_b ---->");
-		print_stack(stack_b);
+		// ft_printf("stack_a ---->");
+		// print_stack(stack_a);
+		// ft_printf("stack_b ---->");
+		// print_stack(stack_b);
 	}
 	free_stack(&stack_a);
 	free_stack(&stack_b);

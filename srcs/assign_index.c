@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:27:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:30:13 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:56:05 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	stack_to_arr(t_stack **stack, int arr[])
 	t_stack	*current;
 
 	i = 0;
-	current = (*stack)->next;
-	arr[i] = (*stack)->data;
-	i++;
-	while (current != *stack)
+	current = *stack;
+	while (current != NULL)
 	{
 		arr[i] = current->data;
 		i++;
@@ -58,8 +56,8 @@ void	set_index(t_stack **stack, int arr[], int size)
 	int		i;
 	t_stack	*current;
 
-	current = (*stack);
-	while (1)
+	current = *stack;
+	while (current != NULL)
 	{
 		i = 0;
 		while (i < size)
@@ -72,8 +70,6 @@ void	set_index(t_stack **stack, int arr[], int size)
 			i++;
 		}
 		current = current->next;
-		if (current == *stack)
-			break ;
 	}
 }
 
