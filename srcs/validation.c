@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:36:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/19 14:43:42 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:42:03 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	is_sorted(t_stack **stack)
 	t_stack	*current;
 
 	current = *stack;
-	while (current != NULL && current->next != NULL)
+	while (current->next != *stack)
 	{
 		if (current->data > current->next->data)
 			return (0);

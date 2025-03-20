@@ -6,55 +6,46 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:07:35 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/19 14:14:32 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:17:40 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap_three(t_stack **stack, int first, int second, int third)
-{
-	if ((first < third) && (third < second))
-	{
-		sa(stack);
-		ra(stack);
-	}
-	if ((second < first) && (first < third))
-		sa(stack);
-	if ((third < first) && (first < second))
-		rra(stack);
-	if ((second < third) && (third < first))
-		ra(stack);
-	if ((third < second) && (second < first))
-	{
-		sa(stack);
-		rra(stack);
-	}
-}
-
 void	sort_three(t_stack **stack)
 {
-	t_stack	*tail;
-	int		first_node;
-	int		second_node;
-	int		third_node;
+	int	first_node;
+	int	second_node;
+	int	third_node;
 
-	if (!stack || !(*stack) || !(*stack)->next || !(*stack)->next->next)
-		return ;
-	tail = return_last_node(stack);
 	first_node = (*stack)->data;
 	second_node = (*stack)->next->data;
-	third_node = tail->data;
-	swap_three(stack, first_node, second_node, third_node);
+	third_node = (*stack)->prev->data;
+	if ((first_node < third_node) && (third_node < second_node))
+	{
+		sa(stack);
+		ra(stack);
+	}
+	if ((second_node < first_node) && (first_node < third_node))
+		sa(stack);
+	if ((third_node < first_node) && (first_node < second_node))
+		rra(stack);
+	if ((second_node < third_node) && (third_node < first_node))
+		ra(stack);
+	if ((third_node < second_node) && (second_node < first_node))
+	{
+		sa(stack);
+		rra(stack);
+	}
 }
 
 static void	find_smallest_num(t_stack **stack, t_stack **smallest)
 {
 	t_stack	*current;
 
-	current = *stack;
-	*smallest = *stack;
-	while (current != NULL)
+	current = (*stack)->next;
+	*smallest = (*stack);
+	while (current != *stack)
 	{
 		if (current->data < (*smallest)->data)
 			*smallest = current;
@@ -66,9 +57,9 @@ void	find_biggest_num(t_stack **stack, t_stack **biggest)
 {
 	t_stack	*current;
 
-	current = *stack;
-	*biggest = *stack;
-	while (current != NULL)
+	current = (*stack)->next;
+	*biggest = (*stack);
+	while (current != *stack)
 	{
 		if (current->data > (*biggest)->data)
 			*biggest = current;
