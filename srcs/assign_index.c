@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:27:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:30:13 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:03:07 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	stack_to_arr(t_stack **stack, int arr[])
 
 	i = 0;
 	current = (*stack)->next;
-	arr[i] = (*stack)->data;
+	arr[i] = (*stack)->value;
 	i++;
 	while (current != *stack)
 	{
-		arr[i] = current->data;
+		arr[i] = current->value;
 		i++;
 		current = current->next;
 	}
@@ -64,7 +64,7 @@ void	set_index(t_stack **stack, int arr[], int size)
 		i = 0;
 		while (i < size)
 		{
-			if (current->data == arr[i])
+			if (current->value == arr[i])
 			{
 				current->index = i;
 				break ;
@@ -77,14 +77,12 @@ void	set_index(t_stack **stack, int arr[], int size)
 	}
 }
 
-void	init_sort_index(t_stack **stack)
+void	init_sort_index(t_stack **stack, int size)
 {
 	int	arr[500];
-	int	size;
 
 	if (!stack || !(*stack))
 		return ;
-	size = get_stack_size(*stack);
 	stack_to_arr(stack, arr);
 	bubble_sort(arr, size);
 	set_index(stack, arr, size);

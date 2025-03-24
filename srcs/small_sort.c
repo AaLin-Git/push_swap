@@ -6,91 +6,98 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:07:35 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/18 11:17:40 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:31:33 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_three(t_stack **stack)
+void	sort_three(t_data *data)
 {
 	int	first_node;
 	int	second_node;
 	int	third_node;
 
-	first_node = (*stack)->data;
-	second_node = (*stack)->next->data;
-	third_node = (*stack)->prev->data;
+	first_node = data->stack_a->value;
+	second_node = data->stack_a->next->value;
+	third_node = data->stack_a->prev->value;
 	if ((first_node < third_node) && (third_node < second_node))
 	{
-		sa(stack);
-		ra(stack);
+		sa(&data->stack_a);
+		ra(&data->stack_a);
 	}
 	if ((second_node < first_node) && (first_node < third_node))
-		sa(stack);
+		sa(&data->stack_a);
 	if ((third_node < first_node) && (first_node < second_node))
-		rra(stack);
+		rra(&data->stack_a);
 	if ((second_node < third_node) && (third_node < first_node))
-		ra(stack);
+		ra(&data->stack_a);
 	if ((third_node < second_node) && (second_node < first_node))
 	{
-		sa(stack);
-		rra(stack);
+		sa(&data->stack_a);
+		rra(&data->stack_a);
 	}
 }
 
-static void	find_smallest_num(t_stack **stack, t_stack **smallest)
+void	find_smallest_node(t_stack **stack, t_stack **smallest)
 {
+	//ft_printf("find smallest start");
 	t_stack	*current;
 
+	if (!stack || !*stack)
+		return;
 	current = (*stack)->next;
 	*smallest = (*stack);
 	while (current != *stack)
 	{
-		if (current->data < (*smallest)->data)
+		if (current->value < (*smallest)->value)
 			*smallest = current;
 		current = current->next;
 	}
 }
 
-void	find_biggest_num(t_stack **stack, t_stack **biggest)
+void	find_biggest_node(t_stack **stack, t_stack **biggest)
 {
+	//ft_printf("find biggest start");
 	t_stack	*current;
 
+	if (!stack || !*stack)
+		return;
 	current = (*stack)->next;
 	*biggest = (*stack);
 	while (current != *stack)
 	{
-		if (current->data > (*biggest)->data)
+		if (current->value > (*biggest)->value)
 			*biggest = current;
 		current = current->next;
 	}
 }
 
-void	sort_five(t_stack **stack_a, t_stack **stack_b, int size)
+void	sort_five(t_data *data, int size)
 {
-	t_stack	*smallest_num;
-	t_stack	*biggest_num;
+	//ft_printf("sort five start");
+	//t_stack	*smallest_node;
+	//t_stack	*biggest_node;
 
-	smallest_num = NULL;
-	biggest_num = NULL;
-	find_smallest_num(stack_a, &smallest_num);
-	find_biggest_num(stack_a, &biggest_num);
+	//smallest_node = NULL;
+	//biggest_node = NULL;
+	//find_smallest_node(&data->stack_a, &smallest_node);
+	//find_biggest_node(&data->stack_a, &biggest_node);
 	while (size > 3)
 	{
-		if (biggest_num == *stack_a || smallest_num == *stack_a)
+		if (data->max == data->stack_a->value || data->min == data->stack_a->value)
 		{
-			pb(stack_a, stack_b);
+			pb(&data->stack_a, &data->stack_b);
 			size--;
 		}
 		else
-			ra(stack_a);
+			ra(&data->stack_a);
 	}
-	sort_three(stack_a);
-	while (*stack_b)
+	sort_three(data);
+	while (data->stack_b != NULL)
 	{
-		pa(stack_b, stack_a);
-		if ((*stack_a)->data > (*stack_a)->next->data)
-			ra(stack_a);
+		pa(&data->stack_b, &data->stack_a);
+		if (data->stack_a->value > data->stack_a->next->value)
+			ra(&data->stack_a);
 	}
 }

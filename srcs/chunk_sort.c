@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/20 11:49:01 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:28:05 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	insert_chunks(t_stack **stack_a, t_stack **stack_b)
 
 	while (*stack_b)
 	{
-		find_biggest_num(stack_b, &biggest_node);
+		find_biggest_node(stack_b, &biggest_node);
 		if (!biggest_node)
 			return ;
 		biggest = biggest_node->index;
@@ -105,16 +105,14 @@ void	insert_chunks(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int size)
+void	chunk_sort(t_data *data)
 {
-	int	chunk_size;
-
-	if (size <= 100)
-		chunk_size = 20;
+	if (data->stack_a->size <= 100)
+		data->chunk_size = 20;
 	else
-		chunk_size = 35;
-	init_sort_index(stack_a);
-	push_chunks(stack_a, stack_b, chunk_size, size);
-	init_sort_index(stack_b);
-	insert_chunks(stack_a, stack_b);
+		data->chunk_size = 35;
+	init_sort_index(&data->stack_a, data->stack_a->size);
+	push_chunks(&data->stack_a, &data->stack_b, data->chunk_size, data->stack_a->size);
+	init_sort_index(&data->stack_b, data->stack_b->size);
+	insert_chunks(&data->stack_a, &data->stack_b);
 }
