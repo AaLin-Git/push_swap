@@ -6,113 +6,116 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:41:14 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/24 15:28:05 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:01:33 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	return_node_direction(t_stack **stack, int start, int end)
+int	find_node(t_stack **stack, int start, int end)
 {
+	ft_printf("find_node start");
 	t_stack	*head;
-	t_stack	*tail;
+	int count;
 
 	head = *stack;
-	tail = (*stack)->prev;
-	while (head != *stack || tail != *stack)
+	count = 0;
+	while (head != (*stack)->prev)
 	{
 		if (end == 0)
 		{
 			if (head->index == start)
-				return (1);
-			if (tail->index == start)
-				return (-1);
+				return (count);
 		}
 		else
 		{
 			if (head->index >= start && head->index <= end)
-				return (1);
-			if (tail->index >= start && tail->index <= end)
-				return (-1);
+				return (count);
 		}
 		head = head->next;
-		tail = tail->prev;
+		count++;
 	}
-	return (0);
+	return (count);
 }
 
-void	move_node(t_stack **stack_a, t_stack **stack_b, int ch_size, int start)
+void	move_node(t_data *data, int start)
 {
+	ft_printf("move node start\n");
 	int	count;
 	int	direction;
 	int	end;
 
-	if (!(*stack_a))
+	if (!(data->stack_a))
 		return ;
 	count = 0;
-	end = start + ch_size - 1;
-	while (count < ch_size && *stack_a)
+	end = start + data->chunk_size - 1;
+	while (count < data->chunk_size && data->stack_a)
 	{
-		direction = return_node_direction(stack_a, start, end);
-		while (!((*stack_a)->index >= start && (*stack_a)->index <= end))
+		direction = find_node(&data->stack_a, start, end);
+		while (!(data->stack_a->index >= start && data->stack_a->index <= end))
 		{
-			if (direction > 0)
-				ra(stack_a);
+			if (direction < data->total_size / 2)
+				ra(&data->stack_a);
 			else
-				rra(stack_a);
+				rra(&data->stack_a);
 		}
-		pb(stack_a, stack_b);
+		pb(&data->stack_a, &data->stack_b);
 		count++;
 	}
+	ft_printf("move node end\n");
 }
 
-void	push_chunks(t_stack **st_a, t_stack **st_b, int ch_size, int size)
+void	push_chunks(t_data *data)
 {
+	ft_printf("push start\n");
 	int	start;
 	int	end;
 
 	start = 0;
-	end = ch_size - 1;
-	while (start < size)
+	end = data->chunk_size - 1;
+	while (start < data->total_size)
 	{
-		move_node(st_a, st_b, ch_size, start);
-		start += ch_size;
-		end += ch_size;
+		move_node(data, start);
+		start += data->chunk_size;
+		end += data->chunk_size;
 	}
+	ft_printf("push end\n");
 }
 
-void	insert_chunks(t_stack **stack_a, t_stack **stack_b)
+void	insert_chunks(t_data *data)
 {
+	ft_printf("insert start\n");
 	t_stack	*biggest_node;
 	int		biggest;
 	int		direction;
 
-	while (*stack_b)
+	while (data->stack_b != NULL)
 	{
-		find_biggest_node(stack_b, &biggest_node);
+		find_biggest_node(&data->stack_b, &biggest_node);
 		if (!biggest_node)
 			return ;
 		biggest = biggest_node->index;
-		direction = return_node_direction(stack_b, biggest, 0);
-		while ((*stack_b)->index != biggest)
+		direction = find_node(&data->stack_b, biggest, 0);
+		while (data->stack_b->index != biggest)
 		{
-			if (*stack_b && direction > 0)
-				rb(stack_b);
+			if (data->stack_b && direction < data->total_size / 2)
+				rb(&data->stack_b);
 			else
-				rrb(stack_b);
+				rrb(&data->stack_b);
 		}
-		pa(stack_b, stack_a);
+		pa(&data->stack_b, &data->stack_a);
 	}
+	ft_printf("insert start\n");
 }
 
 void	chunk_sort(t_data *data)
 {
-	if (data->stack_a->size <= 100)
+	if (data->total_size <= 100)
 		data->chunk_size = 20;
 	else
 		data->chunk_size = 35;
-	init_sort_index(&data->stack_a, data->stack_a->size);
-	push_chunks(&data->stack_a, &data->stack_b, data->chunk_size, data->stack_a->size);
-	init_sort_index(&data->stack_b, data->stack_b->size);
-	insert_chunks(&data->stack_a, &data->stack_b);
+	init_sort_index(&data->stack_a, data->total_size);
+	push_chunks(data);
+	//init_sort_index(&data->stack_b, data->stack_b->size);
+	insert_chunks(data);
 }

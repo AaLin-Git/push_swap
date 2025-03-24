@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:07:35 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/24 15:31:33 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:47:22 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	find_smallest_node(t_stack **stack, t_stack **smallest)
 
 void	find_biggest_node(t_stack **stack, t_stack **biggest)
 {
-	//ft_printf("find biggest start");
+	ft_printf("find biggest start\n");
 	t_stack	*current;
 
 	if (!stack || !*stack)
