@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 NAME = push_swap
@@ -16,20 +16,25 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@echo "linked successfully"
 
 $(LIBFT):
 	@make -s -C $(LIBFT_DIR)
-
+	@echo "libft compiled correctly"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "compiled successfully"
 
 clean:
 	@$(RM) $(OBJS)
+	@make -C $(LIBFT_DIR) clean
+	@echo "removed object files from push_swap"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@make -C $(LIBFT_DIR) fclean
+	@echo "removed $(NAME) and $(LIBFT)"
 
 re: fclean all
 
