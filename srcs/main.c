@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/24 16:00:21 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:58:42 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	sort(t_data *data)
 		sort_five(data, data->total_size);
 	else
 		chunk_sort(data);
-	ft_printf("stack_a->");
-	print_stack(data->stack_a);
-	ft_printf("stack_b->");
-	print_stack(data->stack_b);
+	// ft_printf("stack_a->");
+	// print_stack(data->stack_a);
+	// ft_printf("stack_b->");
+	// print_stack(data->stack_b);
 	//ft_printf("min-> %i", data->min);
 	//ft_printf("max-> %i", data->max);
 	free_stack(&data->stack_a);

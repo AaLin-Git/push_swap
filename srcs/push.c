@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:50:44 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/24 15:47:08 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:05:20 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	push(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_printf("push start\n");
+	//ft_printf("push start\n");
 	t_stack	*node_to_move;
 	t_stack *last_node_b;
 
@@ -46,7 +46,7 @@ static void	push(t_stack **stack_a, t_stack **stack_b)
 
 void	pa(t_stack **stack_b, t_stack **stack_a)
 {
-	ft_printf("pa start\n");
+	//ft_printf("pa start\n");
 	if (!stack_a || !stack_b || !(*stack_b))
 		return ;
 	push(stack_b, stack_a);
@@ -55,7 +55,7 @@ void	pa(t_stack **stack_b, t_stack **stack_a)
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_printf("pb start\n");
+	//ft_printf("pb start\n");
 	if (!stack_a || !stack_b || !(*stack_a))
 		return ;
 	push(stack_a, stack_b);
