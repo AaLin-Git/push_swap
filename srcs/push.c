@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:50:44 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/24 16:05:20 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:27:51 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,32 @@
 
 static void	push(t_stack **stack_a, t_stack **stack_b)
 {
-	//ft_printf("push start\n");
 	t_stack	*node_to_move;
-	t_stack *last_node_b;
+	t_stack	*second_node;
+	t_stack	*last_node;
+	char	*value;
 
 	node_to_move = *stack_a;
-	if (*stack_a == (*stack_a)->next)
+	second_node = (*stack_a)->next;
+	last_node = (*stack_a)->prev;
+	if ((*stack_a)->next == *stack_a)
 		*stack_a = NULL;
 	else
 	{
-		(*stack_a)->prev->next = (*stack_a)->next;
-		(*stack_a)->next->prev = (*stack_a)->prev;
-		*stack_a = (*stack_a)->next;
+		last_node->next = second_node;
+		second_node->prev = last_node;
+		*stack_a = second_node;
 	}
-	if (!(*stack_b))
-	{
-		node_to_move->next = node_to_move;
-		node_to_move->prev = node_to_move;
-		*stack_b = node_to_move;
-	}
-	else
-	{
-		last_node_b = (*stack_b)->prev;
-		node_to_move->next = *stack_b;
-		node_to_move->prev = last_node_b;
-		last_node_b->next = node_to_move;
-		(*stack_b)->prev = node_to_move;
-		*stack_b = node_to_move;
-	}
+	value = ft_itoa(node_to_move->data);
+	if (!value)
+		return ;
+	add_node(stack_b, value);
+	free(node_to_move);
+	free(value);
 }
 
 void	pa(t_stack **stack_b, t_stack **stack_a)
 {
-	//ft_printf("pa start\n");
 	if (!stack_a || !stack_b || !(*stack_b))
 		return ;
 	push(stack_b, stack_a);
@@ -55,7 +48,6 @@ void	pa(t_stack **stack_b, t_stack **stack_a)
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	//ft_printf("pb start\n");
 	if (!stack_a || !stack_b || !(*stack_a))
 		return ;
 	push(stack_a, stack_b);

@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:18:15 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/24 15:02:48 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:31:59 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_stack	*create_new_node(int num)
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
-	new_node->value = num;
+	new_node->data = num;
 	new_node->next = new_node;
 	new_node->prev = new_node;
 	return (new_node);
@@ -33,10 +33,10 @@ bool	add_node(t_stack **stack, char *arg)
 {
 	t_stack	*new_node;
 	t_stack	*tail;
-	int		value;
+	int		data;
 
-	value = ft_atoi(arg);
-	new_node = create_new_node(value);
+	data = ft_atoi(arg);
+	new_node = create_new_node(data);
 	if (!new_node)
 		return (false);
 	if (!(*stack))
@@ -50,7 +50,6 @@ bool	add_node(t_stack **stack, char *arg)
 		(*stack)->prev = new_node;
 		*stack = new_node;
 	}
-	//ft_printf("added %i", value);
 	return (true);
 }
 
@@ -71,14 +70,11 @@ int	get_stack_size(t_stack *stack)
 	return (i);
 }
 
-bool	fill_stack(t_data *data, int argc, char **argv)
+bool	fill_stack(t_stack **stack, int index, char **argv)
 {
-	int index;
-	
-	index = argc - 1;
 	while (index > 0)
 	{
-		if (!add_node(&data->stack_a, argv[index]))
+		if (!add_node(stack, argv[index]))
 			return (false);
 		index--;
 	}

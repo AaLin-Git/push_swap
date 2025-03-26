@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:36:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/24 15:19:21 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:33:15 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	is_number(char **argv, int size)
 	int		i;
 	char	*str;
 
-	//ft_printf("is_number start");
 	i = 1;
 	while (i <= size)
 	{
@@ -36,29 +35,25 @@ static int	is_number(char **argv, int size)
 		}
 		i++;
 	}
-	//ft_printf("is_number end");
 	return (1);
 }
 
 int	is_sorted(t_stack **stack)
 {
-	//ft_printf("is_sorted start");
 	t_stack	*current;
 
 	current = *stack;
 	while (current->next != *stack)
 	{
-		if (current->value > current->next->value)
+		if (current->data > current->next->data)
 			return (0);
 		current = current->next;
 	}
-	//ft_printf("is_sorted end");
 	return (1);
 }
 
 static int	is_duplicate(char **argv, int size)
 {
-	//ft_printf("size = %i", size);
 	int	i;
 	int	j;
 
@@ -74,13 +69,11 @@ static int	is_duplicate(char **argv, int size)
 		}
 		i++;
 	}
-	//ft_printf("is_dup end");
 	return (0);
 }
 
 static int	is_int_limit(char **argv, int size)
 {
-	//ft_printf("is_limit start");
 	int		i;
 	long	num;
 
@@ -92,16 +85,13 @@ static int	is_int_limit(char **argv, int size)
 			return (1);
 		i++;
 	}
-//	ft_printf("is_limit end");
 	return (0);
 }
 
-int	is_valid(int argc, char **argv)
+int	is_valid(char **argv, int size)
 {
-	//ft_printf("is_valid start");
-	if (!is_number(argv, argc - 1) || is_duplicate(argv, argc - 1)
-		|| is_int_limit(argv, argc - 1))
+	if (!is_number(argv, size) || is_duplicate(argv, size)
+		|| is_int_limit(argv, size))
 		return (print_error(ERR), 0);
-	//ft_printf("is_valid end");
 	return (1);
 }

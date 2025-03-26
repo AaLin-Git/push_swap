@@ -6,104 +6,59 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/25 15:58:42 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/26 12:23:10 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/errors.h"
-#include <stdbool.h>
 
-void	print_stack(t_stack *stack)
+static void	sort(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int	i;
-	int	size;
-
-	i = 0;
-	size = get_stack_size(stack);
-	if (!stack)
-	{
-		ft_printf("(empty)\n");
-		return;
-	}
-	while (i < size)
-	{
-		ft_printf("%d -> ", stack->value);
-		stack = stack->next;
-		i++;
-	}
-	ft_printf("\n");
-}
-
-void	sort(t_data *data)
-{
-	if (!data->stack_a || is_sorted(&data->stack_a))
-	{
-		free_stack(&data->stack_a);
-		exit (0); //false
-	}
-	//ft_printf("sort start");
-	if (data->total_size == 2 && data->stack_a->value > data->stack_a->next->value)
-	{
-		//ft_printf("check 2");
-		ra(&data->stack_a);
-	}
-	else if (data->total_size == 3)
-		sort_three(data);
-	else if (data->total_size <= 5)
-		sort_five(data, data->total_size);
+	if (size == 2 && ((*stack_a)->data > (*stack_a)->next->data))
+		ra(stack_a);
+	else if (size == 3)
+		sort_three(stack_a);
+	else if (size <= 5)
+		sort_five(stack_a, stack_b, size);
 	else
-		chunk_sort(data);
-	// ft_printf("stack_a->");
-	// print_stack(data->stack_a);
-	// ft_printf("stack_b->");
-	// print_stack(data->stack_b);
-	//ft_printf("min-> %i", data->min);
-	//ft_printf("max-> %i", data->max);
-	free_stack(&data->stack_a);
-	free_stack(&data->stack_b);
-	//ft_printf("sort end");
+		chunk_sort(stack_a, stack_b, size);
+	free_stack(stack_a);
+	free_stack(stack_b);
 }
 
-bool init_data(t_data *data, int argc, char **argv)
-{	
-	t_stack *smallest;
-	t_stack *biggest;
-	
-	data->stack_a = NULL;
-	data->stack_b = NULL;
-	data->chunk_size = 0;
-	if (is_valid(argc, argv))
+static bool	init(char **argv, int size)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (is_valid(argv, size))
 	{
-		if (!fill_stack(data, argc, argv))
+		if (!fill_stack(&stack_a, size, argv))
 		{
-			free_stack(&data->stack_a);
+			free_stack(&stack_a);
 			return (false);
 		}
-		data->total_size = argc - 1;
-		find_smallest_node(&data->stack_a, &smallest);
-		find_biggest_node(&data->stack_a, &biggest);
-		data->min = smallest->value;
-		data->max = biggest->value;
+		if (is_sorted(&stack_a))
+		{
+			free_stack(&stack_a);
+			return (false);
+		}
 	}
+	sort(&stack_a, &stack_b, size);
 	return (true);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data *data;
+	int	size;
 
 	if (argc < 2)
 		exit(0);
-	data = malloc(sizeof(t_data));
-	if (!data)
-		return (EXIT_FAILURE);
-	if (!init_data(data, argc, argv))
-	{
-		free(data);
-		return (EXIT_FAILURE);
-	}
-	sort(data);
-	free(data);
-	return (EXIT_SUCCESS);
+	size = argc - 1;
+	if (!init(argv, size))
+		return (1);
+	return (0);
 }
