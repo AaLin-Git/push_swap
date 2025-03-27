@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:27:20 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/26 11:42:51 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:04:05 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ void	init_sort_index(t_stack **stack)
 		return ;
 	size = get_stack_size(*stack);
 	arr = malloc(size * sizeof(int));
+	if (arr == NULL)
+	{
+		free_stack(stack);
+		exit(EXIT_FAILURE) ;
+	}
 	stack_to_arr(stack, arr);
 	bubble_sort(arr, size);
 	set_index(stack, arr, size);
