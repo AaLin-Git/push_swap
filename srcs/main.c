@@ -6,7 +6,7 @@
 /*   By: akovalch <akovalch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:02:30 by akovalch          #+#    #+#             */
-/*   Updated: 2025/03/26 12:30:01 by akovalch         ###   ########.fr       */
+/*   Updated: 2025/03/27 10:19:08 by akovalch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static bool	init(char **argv, int size)
 			free_stack(&stack_a);
 			return (true);
 		}
+		sort(&stack_a, &stack_b, size);
 	}
-	sort(&stack_a, &stack_b, size);
 	return (true);
 }
 
